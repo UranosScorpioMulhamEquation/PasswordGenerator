@@ -1,0 +1,21 @@
+name: Build Flet EXE
+on:
+  push:
+    branches: [ main ]
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install Flet
+        run: pip install flet
+      - name: Build EXE
+        run: flet build windows
+      - name: Upload EXE
+        uses: actions/upload-artifact@v4
+        with:
+          name: PasswordGenerator-EXE
+          path: build/windows/runner/Release/PasswordGenerator.exe
