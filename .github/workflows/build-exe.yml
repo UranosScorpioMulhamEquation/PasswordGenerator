@@ -3,19 +3,17 @@ on:
   push:
     branches: [ main ]
 jobs:
-  build:
+  build-windows:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Install Flet
-        run: pip install flet
-      - name: Build EXE
-        run: flet build windows
-      - name: Upload EXE
-        uses: actions/upload-artifact@v4
+      - run: pip install flet
+      - run: flet build windows
+      - run: Compress-Archive -Path build/windows/runner/Release -DestinationPath PasswordGenerator-EXE.zip
+      - uses: actions/upload-artifact@v4
         with:
           name: PasswordGenerator-EXE
-          path: build/windows/runner/Release/PasswordGenerator.exe
+          path: PasswordGenerator-EXE.zip
