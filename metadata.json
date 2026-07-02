@@ -1,0 +1,8 @@
+{
+  "name": "HENRadar",
+  "product_name": "HENRadar",
+  "version": "1.0.0",
+  "description": "Haumea-Eris-Neptune Personal Radar by Mulham Ahmad",
+  "package_name": "com.mulham.henradar",
+  "orientation": "portrait"
+}
