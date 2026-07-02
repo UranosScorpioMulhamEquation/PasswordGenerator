@@ -1,7 +1,7 @@
 name: Build Flet APK
 
 on:
-  workflow_dispatch:  # زر تشغيل يدوي
+  workflow_dispatch:
 
 jobs:
   build-android:
@@ -23,7 +23,8 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Build APK
-        run: flet build apk --build-number 1 --build-version 1.0.0
+        run: flet build apk --yes --build-number 1 --build-version 1.0.0
+        #                ^^^^^ هذا السطر الجديد. يوافق تلقائي بدون سؤال
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
